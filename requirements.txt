@@ -1,1 +1,1 @@
-pychell>=1.0.5
+pychell>=1.0.6
