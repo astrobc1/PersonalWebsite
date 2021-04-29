@@ -172,7 +172,7 @@ elif page == "pychell Demo":
     sampler = pco.AffInv(obj=likes, options=None)
 
     # Construct a top-level RV "problem"
-    rvprob = pco.RVProblem(output_path=output_path, star_name=star_name, p0=pars, optimizer=optimizer, sampler=sampler, data=data, obj=likes, mstar=mstar, mstar_unc=mstar_unc, tag="EXAMPLE")
+    rvprob = pco.RVProblem(output_path=output_path, star_name=star_name, p0=pars, optimizer=optimizer, sampler=sampler, obj=likes, mstar=mstar, mstar_unc=mstar_unc, tag="EXAMPLE")
 
     ##########################################
     #### Remaining Streamlit interactions ####

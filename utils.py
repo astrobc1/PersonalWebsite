@@ -23,12 +23,12 @@ def write_map_result(rvprob:pco.RVProblem, comps:dict, map_result:dict):
 
     # Full RV plot
     st.markdown('## Full RV Plot')
-    fig = rvprob.plot_full_rvs(pars=pbest, n_model_pts=5000)
+    fig = rvprob.plot_full_rvs(pars=pbest, n_model_pts=5000, save=False)
     comps["fig_rvs_full_map"] = st.plotly_chart(fig)
 
     # Phased rv plot
     st.markdown('## Planets')
-    planet_figs = rvprob.plot_phased_rvs_all(pars=pbest)
+    planet_figs = rvprob.plot_phased_rvs_all(pars=pbest, save=False)
     for i, planet_index in enumerate(rvprob.planets_dict):
         name = "figplanet_" + str(planet_index) + "_map"
         comps[name] = st.plotly_chart(planet_figs[i])
@@ -43,12 +43,12 @@ def write_mcmc_result(rvprob:pco.RVProblem, comps:dict, mcmc_result:dict):
 
     # Full RV plot
     st.markdown('## Full RV Plot')
-    fig = rvprob.plot_full_rvs(pars=pbest, n_model_pts=5000)
+    fig = rvprob.plot_full_rvs(pars=pbest, n_model_pts=5000, save=False)
     comps["fig_rvs_full_map"] = st.plotly_chart(fig)
 
     # Phased rv plot
     st.markdown('## Planets')
-    planet_figs = rvprob.plot_phased_rvs_all(pars=pbest)
+    planet_figs = rvprob.plot_phased_rvs_all(pars=pbest, save=False)
     for i, planet_index in enumerate(rvprob.planets_dict):
         name = "figplanet_" + str(planet_index) + "_map"
         comps[name] = st.plotly_chart(planet_figs[i])
@@ -105,13 +105,13 @@ def action_dispatch(rvprob:pco.RVProblem, comps:dict):
     
     # MAP fit
     if comps["map_button"]:
-        map_result = rvprob.mapfit()
+        map_result = rvprob.mapfit(save=False)
         write_map_result(rvprob, comps, map_result)
     elif comps["mcmc_button"]:
-        mcmc_result = rvprob.mcmc()
+        mcmc_result = rvprob.mcmc(save=False)
         write_mcmc_result(rvprob, comps, mcmc_result)
     elif comps["mc_button"]:
-        mc_result = rvprob.model_comparison()
+        mc_result = rvprob.model_comparison(save=False)
         write_mc_result(rvprob, comps, mc_result)
     elif comps["per_search_button"]:
         pass
